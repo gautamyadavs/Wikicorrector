@@ -1,0 +1,90 @@
+{% load static %}
+{% load poll_extras %}
+{% load multifor %}
+<!doctype html>
+<html>
+<style type="text/css">
+p {
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 3px;
+}
+
+.button {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 10px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  width: 200px;
+height: 30px;
+border-radius: 5px;
+}
+
+#rcorners1 {
+    border-radius: 5px;
+    width: 120px;
+height: 30px;
+float: right;
+text-align: center;
+font-size: 10px;
+  }
+
+  #rcorners2 {
+      border-radius: 5px;
+      width: 120px;
+  height: 30px;
+  float: left;
+  text-align: center;
+  font-size: 10px;
+    }
+
+div {
+  width:550px;
+    margin:auto;
+}
+
+.button:hover {opacity: 1}
+</style>
+<body>
+  <form method='post' action="/index/logout">
+    {% csrf_token %}
+    <button id="rcorners1" type='submit' name='searchsubmit'>Logout</button>
+  </form>
+  <form action="/index">
+    <button type='submit' name='sdsd' id='rcorners1'>Go back</button><br><br>
+  </form>
+  {% if col %}
+  <h3>Select any surface name:</h3>
+    {% for key in col %}
+    <form method='post'>
+      {% csrf_token %}
+    <button type='submit' class="button" name='error' value='{{ key }}'>{{ key }}</button><br><br>
+      </form>
+      {% endfor %}
+    {% elif links %}
+    <h3>Select the links with erroneous data for {{ cols }}:</h3>
+    <form method='post'>
+      {% csrf_token %}
+    {% for key in links; tx in txt; po in px %}
+    <input type="checkbox" name="recommendations" id="option{{key}}" value={{key}} />
+    {% with key|split:"_" as ke %}
+    {% for k in ke %}
+     {% if forloop.first %}
+    <a target="_blank" href=https://en.wikipedia.org/?curid={{ k }}>{{po}}</a><br><p>{{ tx }}</p><br><br>
+    {% endif %}
+      {% endfor %}
+      {% endwith %}
+      {% endfor %}
+      <button id="rcorners1" type='submit' name='store' value='{{ col }}'>Submit</button><br><br>
+      </form>
+      {% else %}
+      <h3>Thanks for your feedback</h3>
+      {% endif %}
+  </body>
+</html>

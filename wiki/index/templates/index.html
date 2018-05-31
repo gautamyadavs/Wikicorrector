@@ -1,0 +1,75 @@
+{% load static %}
+<!doctype html>
+<html>
+<style type="text/css">
+.button {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 10px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  width: 200px;
+height: 30px;
+border-radius: 5px;
+}
+
+#rcorners1 {
+    border-radius: 5px;
+    width: 120px;
+height: 30px;
+float: right;
+text-align: center;
+font-size: 10px;
+  }
+
+  #rcorners2 {
+      border-radius: 5px;
+      width: 120px;
+  height: 30px;
+  float: middle;
+  text-align: center;
+  font-size: 10px;
+    }
+
+  #textboxid
+{
+    height:30px;
+    width:400px;
+}
+
+div {
+  width:550px;
+    margin:auto;
+}
+
+.button:hover {opacity: 1}
+</style>
+<body>
+  <form method='post' action="/index/logout">
+    {% csrf_token %}
+    <button id="rcorners1" type='submit' name='searchsubmit'>Logout</button>
+  </form>
+  <div>
+  <h3>Search:</h3>
+  <form method='post'>
+    {% csrf_token %}
+    <input type="text" name="text1" id="textboxid" placeholder="Search">
+    <button id="rcorners2" type='submit' name='searchsubmit'>Submit</button>
+  </form>
+</div>
+  <br><br>
+  {% if keys %}
+    {% for key in keys %}
+    <form method='post' action="/index/search">
+      {% csrf_token %}
+    <button type='submit' class="button" name='selection' id='selection' value='{{ key }}'>{{ key }}</button><br><br>
+    </form>
+      {% endfor %}
+{% endif %}
+</body>
+</html>
