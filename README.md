@@ -9,4 +9,4 @@ https://dumps.wikimedia.org/enwiki/latest/
 
 To setup the project:
 1. Open wiki/index/views.py and set the path for pickle file
-2. Run WikipediaExtractor.py after installing this repository <a href="https://github.com/attardi/wikiextractor">wikiextractor</a> on the downloaded dump and run getid.py to generate a text file to create indexes for faster access to file text.
+2. Run WikiExtractor.py -cb 250K -o -l extracted enwiki-latest-pages-articles.xml.bz2 after installing this repository <a href="https://github.com/attardi/wikiextractor">wikiextractor</a> on the downloaded dump and run getid.py to generate a text file to create indexes for faster access to file text.
