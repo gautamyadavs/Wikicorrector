@@ -3,7 +3,7 @@
 <html>
 <style type="text/css">
 .button {
-  background-color: #f4511e;
+  background-color: #8B0000;
   border: none;
   color: white;
   text-align: center;
@@ -19,6 +19,8 @@ border-radius: 5px;
 }
 
 #rcorners1 {
+  background-color: #000000;
+  color: white;
     border-radius: 5px;
     width: 120px;
 height: 30px;
@@ -28,6 +30,8 @@ font-size: 10px;
   }
 
   #rcorners2 {
+    background-color: #000000;
+    color: white;
       border-radius: 5px;
       width: 120px;
   height: 30px;
@@ -40,6 +44,7 @@ font-size: 10px;
 {
     height:30px;
     width:400px;
+    background-color: #feffb1;
 }
 
 div {
@@ -49,13 +54,13 @@ div {
 
 .button:hover {opacity: 1}
 </style>
-<body>
+<body style="background:#eeeeee">
   <form method='post' action="/index/logout">
     {% csrf_token %}
     <button id="rcorners1" type='submit' name='searchsubmit'>Logout</button>
   </form>
   <div>
-  <h3>Search:</h3>
+  <h2>Search:</h2>
   <form method='post'>
     {% csrf_token %}
     <input type="text" name="text1" id="textboxid" placeholder="Search">
